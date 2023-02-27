@@ -58,11 +58,12 @@ class Titulaire
     }
     public function afficherComptes()
     {
-        echo "<h1>Comptes de " . $this->prenom . " " . $this->nom . " " . $this->datenaissance . " " . $this->ville . "</h1>";
+        echo "<h1>Comptes de " . $this->prenom . " " . $this->nom . " " . $this->datenaissance . " ans " . $this->ville . "</h1>";
         foreach ($this->comptes as $value) {
             echo "<p> Libéllé " . " / " . "Solde Initiale" . " / " . "Dévise <br>" . $value . "<p>";
         }
     }
+    
     public function __toString()
     {
         return $this->prenom . " " . $this->nom;
