@@ -63,7 +63,7 @@ class Titulaire
             echo "<p> Libéllé " . " / " . "Solde Initiale" . " / " . "Dévise <br>" . $value . "<p>";
         }
     }
-    
+
     public function __toString()
     {
         return $this->prenom . " " . $this->nom;
