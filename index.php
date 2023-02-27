@@ -8,38 +8,41 @@ $bday = new DateTime('12.02.1998'); //date d'origine
 $today = new DateTime('27.02.23'); // date actuel
 $diff = $today->diff($bday);
 
-$bday2 = new DateTime('04.10.2006'); ///date d'origine
-$today2 = new DateTime('27.02.23'); // date actuel
-$diff2 = $today->diff($bday2);
+// $bday2 = new DateTime('04.10.2006'); ///date d'origine
+// $today2 = new DateTime('27.02.23'); // date actuel
+// $diff2 = $today->diff($bday2);
 
-$bday3 = new DateTime('19.07.1970'); ///date d'origine
-$today3 = new DateTime('27.02.23'); // date actuel
-$diff3 = $today->diff($bday3);
+// $bday3 = new DateTime('19.07.1970'); ///date d'origine
+// $today3 = new DateTime('27.02.23'); // date actuel
+// $diff3 = $today->diff($bday3);
 
-$bday4 = new DateTime('25.02.1953'); ///date d'origine
-$today4 = new DateTime('27.02.23'); // date actuel
-$diff4 = $today->diff($bday4);
+// $bday4 = new DateTime('25.02.1953'); ///date d'origine
+// $today4 = new DateTime('27.02.23'); // date actuel
+// $diff4 = $today->diff($bday4);
 
 $t1 = new Titulaire("Mathieu", "Stamm", $diff->y, "Mulhouse");
 $c1 = new Compte("Compte Courant", 2000, "Euros", $t1);
 $c2 = new Compte("Livret A", 200, "Euros", $t1);
 
-$t2 = new Titulaire("Martin", "Stamm", $diff2->y, "Lutterbach");
-$c1 = new Compte("Compte Courant", 1000, "Euros", $t2);
-$c2 = new Compte("Livret A", 500, "Euros", $t2);
+// $t2 = new Titulaire("Martin", "Stamm", $diff2->y, "Lutterbach");
+// $c1 = new Compte("Compte Courant", 1000, "Euros", $t2);
+// $c2 = new Compte("Livret A", 500, "Euros", $t2);
 
-$t3 = new Titulaire("Michaela", "Stamm", $diff3->y, "Bad-Krozingen");
-$c1 = new Compte("Compte Courant", 500, "Euros", $t3);
-$c2 = new Compte("Livret A", 300, "Euros", $t3);
+// $t3 = new Titulaire("Michaela", "Stamm", $diff3->y, "Bad-Krozingen");
+// $c1 = new Compte("Compte Courant", 500, "Euros", $t3);
+// $c2 = new Compte("Livret A", 300, "Euros", $t3);
 
-$t4 = new Titulaire("Roland", "Stamm", $diff4->y, "Mulhouse");
-$c1 = new Compte("Compte Courant", 2000, "Euros", $t4);
-$c2 = new Compte("Livret A", 1000, "Euros", $t4);
+// $t4 = new Titulaire("Roland", "Stamm", $diff4->y, "Mulhouse");
+// $c1 = new Compte("Compte Courant", 2000, "Euros", $t4);
+// $c2 = new Compte("Livret A", 1000, "Euros", $t4);
 
 echo $t1->afficherComptes();
-echo $t2->afficherComptes();
-echo $t3->afficherComptes();
-echo $t4->afficherComptes();
+// echo $t2->afficherComptes();
+// echo $t3->afficherComptes();
+// echo $t4->afficherComptes();
+
+$c2->debiter(100);
+$c1->crediter(100);
 ?>
 
 <style>

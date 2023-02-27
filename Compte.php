@@ -41,6 +41,22 @@ class Compte
     {
         $this->devise = $devise;
     }
+
+    public function debiter($somme)
+    {
+        $this->$somme - $somme;
+    }
+    public function crediter($somme)
+    {
+        $this->$somme + $somme;
+
+    }
+
+    public function virement($soldeinit,$somme)
+    {
+        $this->$somme += $soldeinit;
+    }
+
     public function __toString()
     {
         return $this->libellé . " / " . $this->soldeinit . " / " . $this->devise;
