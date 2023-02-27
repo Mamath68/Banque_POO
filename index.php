@@ -4,16 +4,19 @@
 include "Compte.php";
 include "Titulaire.php";
 
-$bday = new DateTime('12.02.1998');//dd.mm.yyyy
+$bday = new DateTime('12.02.1998'); //date d'origine
 $today = new DateTime('27.02.23'); // date actuel
 $diff = $today->diff($bday);
-$bday2 = new DateTime('04.10.2006');//dd.mm.yyyy
+
+$bday2 = new DateTime('04.10.2006'); ///date d'origine
 $today2 = new DateTime('27.02.23'); // date actuel
 $diff2 = $today->diff($bday2);
-$bday3 = new DateTime('19.07.1970');//dd.mm.yyyy
+
+$bday3 = new DateTime('19.07.1970'); ///date d'origine
 $today3 = new DateTime('27.02.23'); // date actuel
 $diff3 = $today->diff($bday3);
-$bday4 = new DateTime('25.02.1953');//dd.mm.yyyy
+
+$bday4 = new DateTime('25.02.1953'); ///date d'origine
 $today4 = new DateTime('27.02.23'); // date actuel
 $diff4 = $today->diff($bday4);
 
