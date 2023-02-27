@@ -44,17 +44,26 @@ class Compte
 
     public function debiter($somme)
     {
-        $this->$somme - $somme;
+        if ($this->soldeinit <= $somme) {
+            $this->soldeinit -= $somme;
+            return "Un débit a été effectué";
+        }
     }
+
     public function crediter($somme)
     {
-        $this->$somme + $somme;
-
+        if ($this->soldeinit >= $somme) {
+            $this->soldeinit += $somme;
+            return "Un Crédit a été effectué";
+        }
     }
-
-    public function virement($soldeinit,$somme)
+    
+    public function virement($soldeinit, $somme)
     {
-        $this->$somme += $soldeinit;
+        if ($this->$somme == $soldeinit) {
+            $this->$somme += $soldeinit;
+            return "Un Virement a été effectué";
+        }
     }
 
     public function __toString()
