@@ -3,14 +3,14 @@
 class Compte
 {
     private $libellé;
-    private $soldeinit;
+    private $soldinit;
     private $devise;
     private $titulaire;
 
-    public function __construct($libellé, $soldeinit, $devise, $titulaire)
+    public function __construct($libellé, $soldinit, $devise, $titulaire)
     {
         $this->libellé = $libellé;
-        $this->soldeinit = $soldeinit;
+        $this->soldinit = $soldinit;
         $this->devise = $devise;
         $this->titulaire = $titulaire;
         $titulaire->ajouterCompte($this);
@@ -22,7 +22,7 @@ class Compte
     }
     public function getSoldInit()
     {
-        return $this->soldeinit;
+        return $this->soldinit;
     }
     public function getDevise()
     {
@@ -33,9 +33,9 @@ class Compte
     {
         $this->libellé = $libellé;
     }
-    public function setSoldInit($soldeinit)
+    public function setSoldInit($soldinit)
     {
-        $this->soldeinit = $soldeinit;
+        $this->soldinit = $soldinit;
     }
     public function setDevise($devise)
     {
@@ -44,31 +44,32 @@ class Compte
 
     public function debiter($somme)
     {
-        if ($this->soldeinit <= $somme) {
-            $this->soldeinit -= $somme;
-            return "Un débit a été effectué";
+        if ($this->soldinit <= $somme) {
+            $this->soldinit -= $somme;
         }
     }
 
     public function crediter($somme)
     {
-        if ($this->soldeinit >= $somme) {
-            $this->soldeinit += $somme;
-            return "Un Crédit a été effectué";
-        }
-    }
-    
-    public function virement($soldeinit, $somme)
-    {
-        if ($this->$somme == $soldeinit) {
-            $this->$somme += $soldeinit;
-            return "Un Virement a été effectué";
+        if ($this->soldinit >= $somme) {
+            $this->soldinit += $somme;
         }
     }
 
+    public function virement(Compte $compteDestinataire, float $somme)
+    {
+        if ($this->getSoldInit() >= $somme) {
+            $this->debiter($somme);
+            return "Un débit a été effectué";
+        }
+        if ($this->getSoldInit() <= $compteDestinataire) {
+            $this->crediter($somme);
+            return "Un crédit a été effectué";
+        }
+    }
     public function __toString()
     {
-        return $this->libellé . " / " . $this->soldeinit . " / " . $this->devise;
+        return $this->libellé . " / " . $this->soldinit . " / " . $this->devise;
     }
 }
 ?>

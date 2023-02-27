@@ -22,8 +22,7 @@ $c2 = new Compte("Livret A", 200, "Euros", $t1);
 
 echo $t1->afficherComptes();
 
-echo $c1->debiter(1500);
-echo $c2->crediter(1000);
+echo $c1->virement($c2,1500);
 
 $t2 = new Titulaire("Martin", "Stamm", $diff2->y, "Lutterbach");
 $c1 = new Compte("Compte Courant", 1000, "Euros", $t2);
@@ -31,8 +30,7 @@ $c2 = new Compte("Livret A", 300, "Euros", $t2);
 
 echo $t2->afficherComptes();
 
-echo $c1->debiter(500);
-echo $c2->crediter(500);
+echo $c1->virement($c2,500);
 
 $t3 = new Titulaire("Michaela", "Stamm", $diff3->y, "Mulhouse");
 $c1 = new Compte ("Compte Courant", 5000, "Euros", $t3);
@@ -41,8 +39,7 @@ $c2 = new Compte("Livret A", 500, "Euros", $t3);
 echo $t3->afficherComptes();
 
 
-echo $c1->debiter(2000);
-echo $c2->crediter(2000);
+echo $c1->virement($c2,2000);
 ?>
 <style>
     h1 {
