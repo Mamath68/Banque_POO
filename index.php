@@ -4,42 +4,35 @@
 include "Compte.php";
 include "Titulaire.php";
 
-$bday = new DateTime('12.02.1998'); //date d'origine
-$today = new DateTime('27.02.23'); // date actuel
-$diff = $today->diff($bday);
+$t1 = new Titulaire("Mathieu", "Stamm", "12-02-1998", "Mulhouse");
+$t2 = new Titulaire("Martin", "Stamm", "04-10-2006", "Lutterbach");
+$t3 = new Titulaire("Michaela", "Stamm", "19-07-1970", "Mulhouse");
 
-$bday2 = new DateTime('04.10.2006'); ///date d'origine
-$today2 = new DateTime('27.02.23'); // date actuel
-$diff2 = $today->diff($bday2);
-
-$bday3 = new DateTime('19.07.1970'); ///date d'origine
-$today3 = new DateTime('27.02.23'); // date actuel
-$diff3 = $today->diff($bday3);
-
-$t1 = new Titulaire("Mathieu", "Stamm", $diff->y, "Mulhouse");
 $c1 = new Compte("Compte Courant", 2000, "Euros", $t1); // Si seulement😭😭😭
 $c2 = new Compte("Livret A", 200, "Euros", $t1);
 
-echo $t1->afficherComptes();
+$c3 = new Compte("Compte Courant", 1000, "Euros", $t2);
+$c4 = new Compte("Livret A", 300, "Euros", $t2);
 
-echo $c1->virement($c2,1500);
-
-$t2 = new Titulaire("Martin", "Stamm", $diff2->y, "Lutterbach");
-$c1 = new Compte("Compte Courant", 1000, "Euros", $t2);
-$c2 = new Compte("Livret A", 300, "Euros", $t2);
-
-echo $t2->afficherComptes();
-
-echo $c1->virement($c2,500);
-
-$t3 = new Titulaire("Michaela", "Stamm", $diff3->y, "Mulhouse");
-$c1 = new Compte ("Compte Courant", 5000, "Euros", $t3);
-$c2 = new Compte("Livret A", 500, "Euros", $t3);
-
-echo $t3->afficherComptes();
+$c5 = new Compte("Compte Courant", 5000, "Euros", $t3);
+$c6 = new Compte("Livret A", 500, "Euros", $t3);
 
 
-echo $c1->virement($c2,2000);
+$c1->debiter(500);
+$c1->crediter(450);
+$c1->virement($c2, 1800);
+
+$c3->debiter(600);
+$c3->crediter(500);
+$c3->virement($c4, 700);
+
+$c5->debiter(1500);
+$c5->crediter(500);
+$c5->virement($c6, 4500);
+
+$t1->afficherComptes();
+$t2->afficherComptes();
+$t3->afficherComptes();
 ?>
 <style>
     h1 {

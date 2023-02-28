@@ -5,6 +5,7 @@ class Compte
     private $libellé;
     private $soldinit;
     private $devise;
+    private $argent;
     private $titulaire;
 
     public function __construct($libellé, $soldinit, $devise, $titulaire)
@@ -42,30 +43,22 @@ class Compte
         $this->devise = $devise;
     }
 
-    public function debiter($somme)
+    public function crediter($argent)
     {
-        if ($this->soldinit <= $somme) {
-            $this->soldinit -= $somme;
+        $this->soldinit += $argent;
+    }
+    public function debiter($argent)
+    {
+        if ($this->getSoldInit() >= $argent) {
+            $this->soldinit -= $argent;
         }
     }
 
-    public function crediter($somme)
+    public function virement(Compte $compteDestinataire, float $argent)
     {
-        if ($this->soldinit >= $somme) {
-            $this->soldinit += $somme;
-        }
-    }
-
-    public function virement(Compte $compteDestinataire, float $somme)
-    {
-        if ($this->getSoldInit() >= $somme) {
-            $this->debiter($somme);
-            return "Un débit a été effectué";
-        }
-        if ($this->getSoldInit() <= $compteDestinataire) {
-            $this->crediter($somme);
-            return "Un crédit a été effectué";
-        }
+        $this->debiter($argent);
+        $this->debiter($argent);
+        $compteDestinataire->crediter($argent);
     }
     public function __toString()
     {

@@ -1,19 +1,18 @@
 <?php
-
-
+// classe
 class Titulaire
 {
     private $prenom;
     private $nom;
-    private $datenaissance;
+    private DateTime $datenaissance;
     private $ville;
     private array $comptes;
 
-    public function __construct($prenom, $nom, $datenaissance, $ville)
+    public function __construct($prenom, $nom, string $datenaissance, $ville)
     {
         $this->prenom = $prenom;
         $this->nom = $nom;
-        $this->datenaissance = $datenaissance;
+        $this->datenaissance = new DateTime($datenaissance);
         $this->ville = $ville;
         $this->comptes = [];
     }
@@ -56,9 +55,23 @@ class Titulaire
     {
         $this->comptes[] = $comptes;
     }
+    public function calculerAge()
+    {
+        // recuper datenaissance de la personne dans variable
+        // Recuper jour, mis dans variable.
+        // diff entre les deux dates
+        // return format en année (Y)
+        $bday = $this->datenaissance;
+        $now = new DateTime();
+        $diff = $now->diff($bday);
+
+        return $diff->y;
+
+    }
+
     public function afficherComptes()
     {
-        echo "<h1>Comptes de " . $this->prenom . " " . $this->nom . " " . $this->datenaissance . " ans " . $this->ville . "</h1>";
+        echo "<h1>Comptes de " . $this->prenom . " " . $this->nom . " " .$this->calculerAge() ." ans " . $this->ville . "</h1>";
         foreach ($this->comptes as $value) {
             echo "<p> Libéllé " . " / " . "Solde Initiale" . " / " . "Dévise <br>" . $value . "<p>";
         }
