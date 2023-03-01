@@ -3,11 +3,11 @@
 <?php
 include "Compte.php";
 include "Titulaire.php";
-
+// Titulaire : propriétaire du compte
 $t1 = new Titulaire("Mathieu", "Stamm", "12-02-1998", "Mulhouse");
 $t2 = new Titulaire("Martin", "Stamm", "04-10-2006", "Lutterbach");
 $t3 = new Titulaire("Michaela", "Stamm", "19-07-1970", "Mulhouse");
-
+// comptes apartenant 
 $c1 = new Compte("Compte Courant", 2000, "Euros", $t1); // Si seulement😭😭😭
 $c2 = new Compte("Livret A", 200, "Euros", $t1);
 
